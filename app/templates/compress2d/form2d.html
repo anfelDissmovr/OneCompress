@@ -1,0 +1,38 @@
+<form method="POST" enctype="multipart/form-data">
+    {{ imagesForm.hidden_tag() }}
+    
+    <div class="FormContainer">
+        <div>
+            {{ imagesForm.Weight.label }}
+            {{ imagesForm.Weight }}
+        </div>
+        <div>
+            {{ imagesForm.Quality.label }}
+            {{ imagesForm.Quality }}
+        </div>
+    </div>
+
+ 
+    <div class="FormContainer">
+        <div>
+            {{ imagesForm.Width.label }}
+            {{ imagesForm.Width }}
+        </div>
+    
+        <div>
+            {{ imagesForm.Height.label }}
+            {{ imagesForm.Height }}
+        </div>
+    </div>
+    
+   
+    <div class="form-group full-width">
+        <div class="image-container">
+            {{ imagesForm.images.label }}
+            {{ imagesForm.images }}
+        </div>
+        <div class="submit-container">
+            {{ imagesForm.submit(class="btn-Upload") }}
+        </div>
+    </div>
+</form>

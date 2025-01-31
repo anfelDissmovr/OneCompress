@@ -1,0 +1,32 @@
+
+
+nav {
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2px;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+ 
+.icon-2d {
+    width: 20px; /* Adjust icon size as needed */
+    margin-right: 10px;
+}
+
+/* Optional: Hover effect */
+li:hover {
+  color: #009FF7;
+}
+
+ 

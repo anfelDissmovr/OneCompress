@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="Section-title">
+        <h4 class="title">Compress 2D images</h4> 
+        <hr class="hr-black">
+    </div>
+
+    {% include 'compress2d/form2d.html'%}
+
+    <div>
+        <div class="btn-container">
+            {% if saved_files %}
+                <button id="boton-ejecutar" class="btn-compress">Compress images</button>
+            {% endif %}
+        </div>
+    
+        <div>
+            {% if saved_files %}
+            {% for file, filename_without_extension in saved_files %}
+                {% set current_file = file %}
+                {% set current_index = loop.index %}
+                {% include 'compress2d/card2d.html' %}
+            {% endfor %}
+        {% endif %}
+        </div>
+        
+    </div>
+
+    {% include 'compress2d/modal.html'%}
+  
+    {% block scripts %}
+        {{ super() }}
+    {% endblock %}
+{% endblock %}

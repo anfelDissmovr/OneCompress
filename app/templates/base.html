@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <title>
+        {% block title %} 🔁 OneCompress | 2D Img{% endblock %}   
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/compress2d.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css')}}">
+    <script src="{{ url_for('static', filename='js/funciones.js')}}"></script>
+    
+{% endblock %}
+
+<body>
+    {%block body%}
+        <aside>
+            <div class="logo-container">
+                <h1 class="black-900-italic custom-blue-dark m-200 ">One<spam class="custom-Blue-ligth">Compress</spam></h1>
+            </div> 
+            <hr class="hr-white">
+                {%include 'navbar.html'%}
+        </aside>
+        <div class="principal-container">
+            <header>
+                Welcome Usuario   
+            </header>
+            <main>   
+             {%block content%}{%endblock%} 
+            </main>
+        </div>  
+
+        {%block scripts%}
+        {{super()}}
+    {%endblock%}
+
+    {%endblock%}
+</body>

@@ -1,0 +1,102 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+}
+
+/*Aside*/
+aside {
+  position: fixed; /* Fija el aside a la izquierda */
+  top: 0;
+  left: 0;
+  width: 15%; /* Ancho del aside */
+  height: 100%; /* Altura completa de la pantalla */
+  background-color: #EFEFF1;
+  padding: 1rem;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
+}
+
+/* Logo */
+.logo-container {
+  padding: 1rem;
+  background-color: #EFEFF1;
+  text-align: center;
+}
+
+.logo-container h1 {
+  font-size: 2.5rem; /* Tamaño inicial del logo */
+}
+
+@media (max-width: 1234px) {
+.logo-container h1 {
+  font-size: 2rem;
+}
+}
+
+@media (max-width: 1033px) {
+.logo-container h1 {
+  font-size: 1.5rem;
+}
+}
+
+@media (max-width: 828px) {
+  .logo-container h1 {
+    font-size: 1rem;
+  }
+}
+
+.black-900-italic {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: black;
+}
+
+.custom-Blue-ligth {
+  color: #009FF7;
+}
+
+.custom-blue-dark {
+  color: #1C45A3;
+}
+
+.hr-white {
+  border: 2px solid white; 
+}
+
+/*Header*/
+
+header {
+  color: #009FF7;
+  padding: 2rem;
+  background-color: white;
+}
+
+.principal-container {
+  background-color: #F7F7F8;
+  width: 85%; /* Ancho del contenido principal */
+  margin-left: 15%; /* Deja espacio para el aside fijo */
+}
+
+/*Main Content*/
+
+.hr-black {
+border-bottom: 1px solid black;
+width: 98%;
+margin-top: 0;
+}
+
+.section-title {
+display: flex;
+flex-direction: column;
+justify-items: flex-end;
+}
+
+.title {
+margin-bottom: 10px;
+padding-left: 1rem;
+padding-top: 2rem;
+margin-top: 18px;
+color: #009FF7;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

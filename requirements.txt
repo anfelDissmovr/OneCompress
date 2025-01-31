@@ -1,0 +1,6 @@
+flask
+flask-bootstrap
+flask-wtf
+Pillow
+opencv-python
+pypdf
