@@ -47,3 +47,9 @@ img[alt="download"] {
   margin-top: 15px;
   transition: transform 0.3s ease;
 }
+
+.oops{
+  display: none;
+  justify-content: center;
+  
+}

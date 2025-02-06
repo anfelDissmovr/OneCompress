@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Referencias a los elementos del DOM
     const openPopupBtn = document.getElementById('boton-ejecutar');
-    const closePopupBtn = document.getElementById('closePopupBtn');
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById("popupMessage");
-    const popupImage = document.querySelector('#popup img'); // Seleccionamos la imagen
+    const popupImage = document.querySelector('#popup img'); 
+    const btnOops = document.querySelector('.oops')
+    const btnSuccessfully = document.querySelector('.successfully')
 
     // Función para manejar la solicitud de compresión y mostrar el pop-up
     function handleCompression() {
@@ -22,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     popupImage.src = '../../static/img/download.png'; // Imagen de éxito
                 } else if (data.message.includes('Oops')) {
                     popupImage.src = '../../static/img/alarm.png'; // Imagen de advertencia
+                    btnOops.style.display= 'flex';
+                    btnSuccessfully.style.display = 'none'
+                    
                 } 
                 // Mostrar el pop-up
                 popup.style.display = 'flex';

@@ -59,19 +59,19 @@ def Compress2d():
         full_path = change_path(file)
         get_original_weight, newPath = resize_img(full_path)
 
-        if get_original_weight < 300:
+        if get_original_weight < weight:
             message = "Images Successfully Compressed!"
             show_popup = True
 
-        elif 300 <= get_original_weight <= 4000:
-            target_weight = 300
+        elif weight <= get_original_weight <= 4000:
+            target_weight = weight
             reduction = quality
             get_original_weight = loop_compress(newPath, get_original_weight, target_weight, reduction)
             if get_original_weight <= target_weight:
                 message = "Images Successfully Compressed!"
                 show_popup = True
 
-        elif get_original_weight > 4000 and quality == 40:
+        elif get_original_weight > 4000 and quality == 40: 
             target_weight = 600
             reduction = quality
             get_original_weight = loop_compress(newPath, get_original_weight, target_weight, reduction)
@@ -82,7 +82,7 @@ def Compress2d():
         elif get_original_weight > 4000 and quality != 40:
             filename = os.path.basename(full_path)
             imgName = os.path.splitext(filename)[0]
-            message = f" Oops! The image {imgName} is too large. To avoid quality issues, please re-upload images larger than 4000 KB and set 'Quality' to 40."
+            message = f"Oops! The image {imgName} is too large. To avoid quality issues, please re-upload images larger than 4000 KB, set 'Quality' to 40."
             show_popup = True
 
     return jsonify({'show_popup': show_popup, 'message': message})
