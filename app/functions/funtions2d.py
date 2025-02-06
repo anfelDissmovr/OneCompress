@@ -1,6 +1,7 @@
 import os
 from PIL import Image
 from pathlib import Path
+from flask import flash
 
 # Get the file size and convert it to KB
 def image_size(file):
@@ -56,4 +57,5 @@ def loop_compress(newPath, weight, target_weight, reduction):
         weight = CompressImg2d(weight, newPath, quality)
         quality -= reduction
         print(f"Weight {weight} quality: {quality}")
+    
     return weight

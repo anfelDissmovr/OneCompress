@@ -1,7 +1,5 @@
-from flask import Blueprint, render_template
 import os
-from flask import current_app
-from flask import render_template, request, session
+from flask import render_template, request, session,current_app,Blueprint,render_template,flash
 from app.form import ImageUploadForm
 from werkzeug.utils import secure_filename
 from app.functions.funtions2d import change_path, resize_img, loop_compress
@@ -51,31 +49,42 @@ def index():
 @compress2D.route('compressing', methods=['POST'])
 def Compress2d():
     saved_files = session.get('saved_files')
+    quality = session.get('quality')
+    weight = session.get('weight')
+    width = session.get('width')
     show_popup = False
+    message = ""
 
     for file in saved_files:
         full_path = change_path(file)
         get_original_weight, newPath = resize_img(full_path)
-        
+
         if get_original_weight < 300:
-            print(f"Original weight less than 300 KB: {get_original_weight}")
+            message = "Images Successfully Compressed!"
             show_popup = True
-        
-        elif 300 <= get_original_weight <= 3000:
+
+        elif 300 <= get_original_weight <= 4000:
             target_weight = 300
-            reduction = 20
+            reduction = quality
             get_original_weight = loop_compress(newPath, get_original_weight, target_weight, reduction)
             if get_original_weight <= target_weight:
-                print(f"Final compressed weight: {get_original_weight} KB")
-                show_popup = True
-        
-        elif get_original_weight > 3000:
-            print(f"Image greater than 3000 KB: {get_original_weight}")
-            target_weight = 600
-            reduction = 40
-            get_original_weight = loop_compress(newPath, get_original_weight, target_weight, reduction)
-            if get_original_weight <= target_weight:
-                print(f"Final compressed weight: {get_original_weight} KB")
+                message = "Images Successfully Compressed!"
                 show_popup = True
 
-    return jsonify({'show_popup': show_popup})
+        elif get_original_weight > 4000 and quality == 40:
+            target_weight = 600
+            reduction = quality
+            get_original_weight = loop_compress(newPath, get_original_weight, target_weight, reduction)
+            if get_original_weight <= target_weight:
+                message = "Images Successfully Compressed!"
+                show_popup = True
+
+        elif get_original_weight > 4000 and quality != 40:
+            filename = os.path.basename(full_path)
+            imgName = os.path.splitext(filename)[0]
+            message = f" Oops! The image {imgName} is too large. To avoid quality issues, please re-upload images larger than 4000 KB and set 'Quality' to 40."
+            show_popup = True
+
+    return jsonify({'show_popup': show_popup, 'message': message})
+
+

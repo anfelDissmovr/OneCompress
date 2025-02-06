@@ -9,7 +9,7 @@ class ImageUploadForm(FlaskForm):
         FileAllowed(['png', 'jpg', 'jpeg', 'gif'], '¡Solo se permiten archivos de imagen!')
     ],render_kw={"multiple": True})
     Weight = IntegerField("Weight", default=300)
-    Quality = IntegerField("Quality", default=10, validators=[
+    Quality = IntegerField("Quality", default=20, validators=[
         NumberRange(min=1, max=99, message="El valor de Quality debe estar entre 1 y 99.")
     ])
     Width = IntegerField("Width", default=1920)
