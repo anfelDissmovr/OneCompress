@@ -3,13 +3,11 @@
 {% block head %}
     {{ super() }}
     <title>
-        {% block title %} 🔁 OneCompress | 2D Img{% endblock %}   
+        {% block title %} OneCompress | {{ titulo | default("2D Img") }}{% endblock %}   
     </title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/compress2d.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css')}}">
-    <script src="{{ url_for('static', filename='js/funciones.js')}}"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    {%include 'link_css.html'%}
+    {%include 'script_js.html'%}
     
 {% endblock %}
 
@@ -24,10 +22,17 @@
         </aside>
         <div class="principal-container">
             <header>
-                Welcome Usuario   
+                <div class="userContain">
+                    <h5>  Welcome Usuario</h2>
+                </div>
+                <div class="Section-title">
+                    <h4 class="title">{{ titulo | default("2D Img") }}</h4> 
+                    <hr class="hr-black">
+                </div>
             </header>
             <main>   
-             {%block content%}{%endblock%} 
+             {%block content%}
+             {%endblock%} 
             </main>
         </div>  
 

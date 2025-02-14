@@ -2,7 +2,7 @@ import os
 from flask import render_template, request, session,current_app,Blueprint,render_template,flash
 from app.form import ImageUploadForm
 from werkzeug.utils import secure_filename
-from app.functions.funtions2d import change_path, resize_img, loop_compress
+from app.functions.function2d import change_path, resize_img, loop_compress
 from flask import jsonify
 
 compress2D = Blueprint('Compress2D', __name__)
@@ -43,7 +43,7 @@ def index():
             img_show = session.get('saved_files')  
             return render_template('compress2d/compress2d.html', imagesForm=form, saved_files=img_show)
 
-    return render_template('compress2d/compress2d.html', imagesForm=form)
+    return render_template('compress2d/compress2d.html', imagesForm=form, titulo="Compress 2D Img")
 
 
 @compress2D.route('compressing', methods=['POST'])

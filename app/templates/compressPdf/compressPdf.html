@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+
+{% block title %} 
+OneCompress | Pdf
+{% endblock %}
+
+{%block content%}
+{% for error in pdfForm.Pdf.errors %}
+    <p style="color: red; text-align: center;">{{ error }}</p>
+{% endfor %}
+    <form method="POST" enctype="multipart/form-data">
+        {{ pdfForm.hidden_tag() }}
+        {{ pdfForm.Pdf.label }}
+        {{ pdfForm.Pdf }}
+        {{ pdfForm.submit(class="btn-Upload")}}
+    </form>
+{%endblock%}

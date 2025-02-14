@@ -3,4 +3,4 @@ flask-bootstrap
 flask-wtf
 Pillow
 opencv-python
-pypdf
+pypdf2

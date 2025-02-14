@@ -18,7 +18,7 @@ aside {
 
 /* Logo */
 .logo-container {
-  padding: 1rem;
+  padding: 1px;
   background-color: #EFEFF1;
   text-align: center;
 }
@@ -64,14 +64,6 @@ aside {
   border: 2px solid white; 
 }
 
-/*Header*/
-
-header {
-  color: #009FF7;
-  padding: 2rem;
-  background-color: white;
-}
-
 .principal-container {
   background-color: #F7F7F8;
   width: 85%; /* Ancho del contenido principal */
@@ -86,16 +78,27 @@ width: 98%;
 margin-top: 0;
 }
 
+.userContain{ 
+  background-color: white;
+  padding: 10px;
+  color: #009FF7;
+}
+
+.userContain h5{
+  font-weight:500;
+}
+
 .section-title {
 display: flex;
 flex-direction: column;
 justify-items: flex-end;
+background: #F7F7F8;
 }
 
 .title {
 margin-bottom: 10px;
 padding-left: 1rem;
-padding-top: 2rem;
+padding-top: 3rem;
 margin-top: 18px;
 color: #009FF7;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

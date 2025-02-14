@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <div class="Section-title">
-        <h4 class="title">Compress 2D images</h4> 
-        <hr class="hr-black">
-    </div>
+{% block title %} 
+OneCompress | 2D
+{% endblock %}
 
+{% block content %}
+    {% for error in imagesForm.images.errors %}
+        <p style="color: red; text-align: center;">{{ error }}</p>
+    {% endfor %}
     {% include 'compress2d/form2d.html'%}
 
     <div>
