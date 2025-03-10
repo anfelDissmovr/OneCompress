@@ -12,8 +12,8 @@ class ImageUploadForm(FlaskForm):
     Quality = IntegerField("Quality", default=20, validators=[
         NumberRange(min=1, max=99, message="El valor de Quality debe estar entre 1 y 99.")
     ])
-    Width = IntegerField("Width", default=1920)
-    Height = IntegerField("Height", default=1080)
+    Width = IntegerField("Width", default=2200)
+    Height = IntegerField("Height", default=1238)
     submit = SubmitField('Subir Imágenes') 
     
 class PdfUploadForm(FlaskForm):

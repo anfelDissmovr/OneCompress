@@ -32,7 +32,7 @@ def show_img(path):
 def resize_img(file_path):
     print(file_path)
     with Image.open(file_path) as img:
-        img.thumbnail((1920, 1080))
+        img.thumbnail((2200, 1238))
         if img.mode != 'RGB' and img.mode != 'CMYK':
             img = img.convert('RGB')
         newPath = change_file_name(file_path)
