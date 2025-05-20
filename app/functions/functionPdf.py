@@ -1,24 +1,36 @@
-import PyPDF2
+import fitz
 import os
 from app.config import Config
+from app.functions.function2d import resize_img
 
 
-def dividir_pdf(filepath):
-    archivos_generados = [] 
+def convertir_pdf_a_jpg(pdf_path, target_width=2200, target_height=1238):
+    FileName = os.path.basename(pdf_path)
+    FolderName = os.path.splitext(FileName)[0]
+    output_folder = os.path.join(Config.UPLOAD_FOLDER_PDF, FolderName)
+    print(output_folder)
+    os.makedirs(output_folder, exist_ok=True)
 
-    with open(filepath, "rb") as pdf_file:
-        reader = PyPDF2.PdfReader(pdf_file)
+    ListImg = []
 
-        for i in range(len(reader.pages)):
-            writer = PyPDF2.PdfWriter()
-            writer.add_page(reader.pages[i])
+    pdf_document = fitz.open(pdf_path)
 
-            output_filename = os.path.join(Config.UPLOAD_FOLDER_PDF, f"page_{i+1}.pdf")
+    for page_number in range(len(pdf_document)):
+        page = pdf_document[page_number]
+        
+        page_width = page.rect.width
+        page_height = page.rect.height
 
-            with open(output_filename, "wb") as output_pdf:
-                writer.write(output_pdf)
+        zoom_x = target_width / page_width
+        zoom_y = target_height / page_height
+        mat = fitz.Matrix(zoom_x, zoom_y)
 
-            archivos_generados.append(output_filename) 
-            print(f"✅ Página {i+1} guardada como {output_filename}")
+        pix = page.get_pixmap(matrix=mat)
 
-    return archivos_generados
+        jpg_name = os.path.join(output_folder, f"pagina{page_number + 1}.jpg")
+        pix.save(jpg_name)
+        ListImg.append(jpg_name)
+
+
+    pdf_document.close()
+    return ListImg

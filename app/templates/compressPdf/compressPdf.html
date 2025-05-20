@@ -8,10 +8,18 @@ OneCompress | Pdf
 {% for error in pdfForm.Pdf.errors %}
     <p style="color: red; text-align: center;">{{ error }}</p>
 {% endfor %}
-    <form method="POST" enctype="multipart/form-data">
-        {{ pdfForm.hidden_tag() }}
-        {{ pdfForm.Pdf.label }}
-        {{ pdfForm.Pdf }}
-        {{ pdfForm.submit(class="btn-Upload")}}
-    </form>
+    <div id="formPdf">
+        <form method="POST" enctype="multipart/form-data">
+            {{ pdfForm.hidden_tag() }}
+            {{ pdfForm.Pdf.label }}
+            {{ pdfForm.Pdf }}
+            {{ pdfForm.submit(class="btn-Upload")}}
+        </form>
+    </div>
+
+    <div class="btn-container">
+        {% if SplitBotton %}
+            <button id="button_SliptPdf" class="btn-compress">Slipt Pdf</button>
+        {% endif %}
+    </div>
 {%endblock%}

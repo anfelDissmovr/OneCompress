@@ -1,14 +1,46 @@
-<div id="popup" class="popup-overlay" style="display: none;">
-    <div class="popup-content">
-        <span id="closePopupBtn" class="close-btn">&times;</span>
-        <img src="" alt="download">
-        <h2 id="popupMessage"></h2>
-        <div class="successfully">
-            <button class="btn-popup">Upload images to Storage</button>
-            <button class="btn-popup">Convert other Images</button>
+<div id="popup" class="popup-overlay" style="display: none">
+  <div class="popup-content">
+    <!-- Modal Storageform.html -->
+    <div id="formUpload" class="formStorageModal" style="display: none">
+      <form
+        id="formUpload"
+        method="POST"
+        enctype="multipart/form-data"
+        action="{{ url_for('Compress2D.formStorage') }}"
+      >
+        {{ formStorage.hidden_tag() }} {{ formStorage.idproject.label }} {{
+        formStorage.idproject }}<br />
+        {{ formStorage.idUser.label }} {{ formStorage.idUser }}<br />
+        {{ formStorage.rol.label }} {{ formStorage.rol }}<br />
+        {{ formStorage.folder.label }} {{ formStorage.folder }}<br />
+        <div id="ContainerUploadStogare">
+          {{ formStorage.submit(**{"class": "btn-Upload", "id": "btn-Upload"})
+          }}
         </div>
-        <div class="oops">
-            <button class="btn-popup">Recompress</button>
-        </div>        
+        <div class="btn-container">
+          <button id="uploadingBnt" style="display: none" class="btn-compress">
+            ⌛ Uploading...
+          </button>
+        </div>
+      </form>
     </div>
+
+    <!--Modal ImageCompressed-->
+    <div id="OptionsModal">
+      <img alt="download" />
+      <h2 id="popupMessage"></h2>
+      <div class="successfully">
+        <button id="uploadAll" class="btn-popup">Upload all images</button>
+        <button class="btn-popup">Convert other Images</button>
+      </div>
+      <div class="oops">
+        <button class="btn-popup">Recompress</button>
+      </div>
+    </div>
+
+    <div id="upload_Message" style="display: none">
+      <img id="response_img" />
+      <h4 id="response_storage"></h4>
+    </div>
+  </div>
 </div>

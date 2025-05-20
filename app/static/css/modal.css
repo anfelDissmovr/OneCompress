@@ -51,5 +51,10 @@ img[alt="download"] {
 .oops{
   display: none;
   justify-content: center;
-  
+}
+
+/* reponseUpload */
+
+#response_img{
+  width: 100px;
 }

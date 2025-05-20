@@ -1,37 +1,37 @@
 {% extends 'base.html' %}
 
 {% block title %} 
-OneCompress | 2D
+    OneCompress | 2D
 {% endblock %}
 
-{% block content %}
+{% block content %}     
+
     {% for error in imagesForm.images.errors %}
         <p style="color: red; text-align: center;">{{ error }}</p>
     {% endfor %}
-    {% include 'compress2d/form2d.html'%}
+
+    {% include 'compress2d/form2d.html' %}
 
     <div>
-        <div class="btn-container">
+        <div class="btn-container"> 
             {% if saved_files %}
-                <button id="boton-ejecutar" class="btn-compress">Compress images</button>
+                <button id="boton-ejecutar" class="btn-compress"> ⌛ Cargando Imagenes ...</button>
             {% endif %}
         </div>
-    
-        <div>
-            {% if saved_files %}
+
+        {% if saved_files %}
             {% for file, filename_without_extension in saved_files %}
                 {% set current_file = file %}
                 {% set current_index = loop.index %}
                 {% include 'compress2d/card2d.html' %}
             {% endfor %}
         {% endif %}
-        </div>
-        
     </div>
 
-    {% include 'compress2d/modal.html'%}
-  
+    {% include 'compress2d/modal.html' %}
+
     {% block scripts %}
         {{ super() }}
     {% endblock %}
+
 {% endblock %}

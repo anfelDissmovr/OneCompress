@@ -1,3 +1,4 @@
+#Cambia el nombre desde 001
 import os
 import re
 
@@ -14,7 +15,7 @@ def listar_archivos(carpeta):
         return None
 
 # Definir la carpeta
-carpeta = "C:/Users/anfel/Downloads/CentroSur/Slider/Altas"
+carpeta = r"C:/Users/anfel/Downloads/DissmoVr/Arista/Arista/IMAGENES/SLIDER-ARISTA-FULL/100K @ 20"
 archivos = listar_archivos(carpeta)
 
 if archivos is None:
@@ -22,11 +23,12 @@ if archivos is None:
 else:
     print("Archivos antes del renombrado:", archivos)
 
-    nuevo_numero = 4001  # Número inicial
+    nuevo_numero = 4001  # Inicia desde 1
     for archivo in archivos:
         ruta_vieja = os.path.join(carpeta, archivo)
         extension = os.path.splitext(archivo)[1]
-        nuevo_nombre = f"{nuevo_numero}{extension}"
+        # Rellenar con ceros a la izquierda para lograr 3 dígitos
+        nuevo_nombre = f"{str(nuevo_numero).zfill(3)}{extension}"
         ruta_nueva = os.path.join(carpeta, nuevo_nombre)
 
         try:
@@ -38,7 +40,6 @@ else:
     # Verificar los cambios
     archivos_renombrados = listar_archivos(carpeta)
     print("Archivos después del renombrado:", archivos_renombrados)
-
 
 
 # import os
